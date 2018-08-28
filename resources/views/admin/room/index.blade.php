@@ -29,7 +29,7 @@ Manajemen Data Ruang Kelas
                         <a href="javascript:void(0)" class="themed-color-flatie">Kelas {{ $kelas->name }}</a><br>
                         <small>Wali Kelas : <strong>{{ $kelas->teacher->name }}</strong></small>
                         <br>
-                        <small>Ketua Murid : <strong>{{ $kelas->leader->name }}</strong></small>
+                        <small>Ketua Murid : @if($kelas->leader)<strong>{{ $kelas->leader->name }}</strong> @else Belum ada Ketua Murid @endif</small>
                         <br>
                         <small>Jumlah Murid : <strong>{{ $kelas->student->count() }}</strong> siswa</small>
                     </h3>

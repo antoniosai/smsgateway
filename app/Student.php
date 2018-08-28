@@ -59,4 +59,9 @@ class Student extends Authenticatable
     {
         return $this->hasOne('App\Room');
     }
+
+    public function wali()
+    {
+        return $this->belongsTo('App\Parents', 'parents_id');
+    }
 }

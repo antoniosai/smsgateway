@@ -1,36 +1,25 @@
 @extends('admin.layout.app') 
 
-@section('title') Tambah Ruang Kelas @endsection 
+@section('title') Buat Broadcast Baru @endsection 
 
 @section('content')
-<form action="/admin/room/store" method="POST">
+<form action="/admin/broadcast/send_message" method="POST">
     {{ csrf_field() }}
     <div class="row">
         <div class="col-md-8">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="name">Nama Kelas <strong>*)</strong></label>
-                <input type="text" class="form-control" name="name" required>
+                <label for="tujuan">Tujuan</label>
+                <br/>
+            
+                <label class="radio-inline"><input type="radio" name="tujuan" checked value="parents">Orang Tua Siswa</label>
+                <label class="radio-inline"><input type="radio" name="tujuan" value="teachers">Guru</label>
+                <label class="radio-inline"><input type="radio" name="tujuan" value="students">Siswa</label>
             </div>
 
             <div class="form-group">
-                <label for="teacher_id">Wali Kelas<strong>*)</strong></label>
-                <select name="teacher_id" id="teacher_id" class="form-control" required>
-                    <option selected disabled>-- Wali Kelas --</option>
-                    @foreach(App\Teacher::select('name', 'nip', 'id')->get() as $teacher)
-                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="student_id">Ketua Murid <strong>*)</strong></label>
-                <select name="student_id" id="student_id" class="form-control" required>
-                    <option selected disabled>-- Ketua Murid --</option>
-                    @foreach(App\Student::select('name', 'nis', 'id')->get() as $student)
-                    <option value="{{ $student->id }}">{{ $student->name }}</option>
-                    @endforeach
-                </select>
+                <label for="message">Message</label>
+                <textarea name="message" id="" cols="30" rows="4" class="form-control"></textarea>
             </div>
 
         </div>
@@ -52,7 +41,7 @@
                 
             </div>
 
-            <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Simpan</button>
+            <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Kirim</button>
             <a href="/admin/student/add" class="btn btn-block btn-danger"><i class="fa fa-return"></i> Reset</a>
             <br>
         </div>

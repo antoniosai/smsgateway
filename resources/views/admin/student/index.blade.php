@@ -28,6 +28,7 @@ Manajemen Data Siswa
             <th>TTL</th>
             <th>Kelamin</th>
             <th>Agama</th>
+            <th>Wali</th>
             <th>#</th>
         </tr>
     </thead>
@@ -48,6 +49,12 @@ Manajemen Data Siswa
             <td>{{ $student->birthplace . ', ' . $student->birthdate }}</td>
             <td>{{ $student->gender->name }}</td>
             <td>{{ $student->religion->name }}</td>
+            <td>
+                @if($student->wali)
+                    {{ $student->wali->name }} ({{ $student->wali->phone }})
+                @else
+                @endif
+            </td>
             <td>
                 <a href="/admin/student/detail/{{ $student->id }}" class="btn btn-xs btn-primary" title="Detail Siswa"><i class="fa fa-eye"></i></a>
                 <a href="/admin/student/edit/{{ $student->id }}" class="btn btn-xs btn-warning" title="Edit Siswa"><i class="fa fa-pencil"></i></a>

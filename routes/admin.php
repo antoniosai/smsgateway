@@ -10,6 +10,16 @@ Route::get('/home', function () {
     return view('admin.home');
 })->name('home');
 
+
+Route::group(['prefix' => 'profile'], function(){
+    Route::get('/', 'AdminAuth\ProfileController@index');
+    Route::post('save', 'AdminAuth\ProfileController@save');
+});
+
+Route::group(['prefix' => 'setting'], function(){
+    Route::post('tahun_ajaran', 'AdminAuth\SettingController@tahun_ajaran');
+});
+
 Route::group(['prefix' => 'student'], function(){
     Route::get('/', 'AdminAuth\StudentController@index');
     
@@ -86,9 +96,20 @@ Route::group(['prefix' => 'schedule'], function(){
 
 });
 
+Route::group(['prefix' => 'schedule_exam'], function(){
+    Route::get('/', 'AdminAuth\ScheduleExamController@index');
+    Route::post('store', 'AdminAuth\ScheduleExamController@store');
+    
+    Route::post('update', 'AdminAuth\ScheduleExamController@update');
+    Route::get('delete/{id}', 'AdminAuth\ScheduleExamController@delete');
+
+});
+
 
 Route::group(['prefix' => 'broadcast'], function(){
     Route::get('/', 'AdminAuth\BroadcastController@index');
+    Route::get('add', 'AdminAuth\BroadcastController@add');
     Route::post('sendSMS', 'AdminAuth\BroadcastController@sendSMS');
+    Route::post('send_message', 'AdminAuth\BroadcastController@send_message');
 });
 

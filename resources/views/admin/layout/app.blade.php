@@ -180,7 +180,7 @@
                         @yield('breadcrumbs')
                         <li class="pull-right">
                             <a href="" class="btn btn-xs btn-info" style="margin-top: -2px">
-                                <strong>Tahun Ajaran 2017/2018</strong>
+                                <strong>Tahun Ajaran {{ App\Info::first()->active_year . ' : Semester ' . App\Info::first()->active_semester }}</strong>
                             </a>
                         </li>
                     </ul>

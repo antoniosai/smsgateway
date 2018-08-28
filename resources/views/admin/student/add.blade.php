@@ -6,7 +6,7 @@
 <form action="/admin/student/store" method="POST">
     {{ csrf_field() }}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Nama Siswa <strong>*)</strong></label>
@@ -83,7 +83,39 @@
             </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="parent_name">Nama Wali</label>
+                <input type="text" name="parent_name" class="form-control" value="{{ old('parent_name') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="parent_job">Telephone Wali</label>
+                <input type="text" name="parent_phone" class="form-control" value="{{ old('parent_phone') }}">
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="parent_name">Tempat Lahir Wali</label>
+                        <input type="text" name="parent_birthplace" class="form-control" value="{{ old('parent_birthplace') }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="parent_name">Tanggal Lahir Wali</label>
+                        <input type="date" name="parent_birthdate" class="form-control" value="{{ old('parent_birthdate') }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="parent_job">Pekerjaan Wali</label>
+                <input type="text" name="parent_job" class="form-control" value="{{ old('parent_job') }}">
+            </div>
+            
+
             <div class="alert alert-warning">
                 <ul>
                     <li>

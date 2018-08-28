@@ -33,12 +33,6 @@
         </ul>
     </li>
 
-    <li>
-        <a href="/admin/home">
-            <i class="fa fa-users sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide">Rombongan Belajar</span>
-        </a>
-    </li>
 
     <li>
         <a href="/admin/broadcast">
@@ -65,11 +59,21 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="active_year" style="color:black">Tahun Ajaran</label>
-                        <select name="active_year" id="active_year" class="form-control">
-                            @for($i = 2017; $i <= date('Y'); $i ++)
-                            <option value="{{ $i.'/'.$i++ }}">{{ $i.'/'.$i++ }}</option>
-                            @endfor
+                        <input type="text" name="active_year" class="form-control" value="{{ App\Info::first()->active_year }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="active_semester" style="color:black">Semester</label>
+                        <select name="active_semester" id="active_semester" class="form-control">
+                            <option value="I">I - Satu</option>
+                            <option value="II">II - Dua</option>
                         </select>
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
                     </div>
                 </form>
             </div>

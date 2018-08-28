@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Student;
+use App\Parents as Wali;
 
 class StudentController extends Controller
 {
@@ -54,6 +55,13 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
+        $parents = new Wali;
+        $parents->name = $request->input('parent_name');
+        $parents->birthplace = $request->input('parent_birthplace');
+        $parents->birthdate = $request->input('birthdate');
+        $parents->phone = $request->input('parent_phone');
+        $parents->job = $request->input('parent_job');
+        $parents->save();
 
         $student = new Student;
         $student->nis = $request->input('nis');
@@ -68,6 +76,11 @@ class StudentController extends Controller
         $student->gender_id = $request->input('gender_id');
         $student->religion_id = $request->input('religion_id');
         $student->room_id = $request->input('room_id');
+
+        if($parents)
+        {
+            $student->parents_id = $parents->id;
+        }
 
         if($student->save())
         {
@@ -89,6 +102,14 @@ class StudentController extends Controller
     {
         // return $request->all();
 
+        $parents = new Wali;
+        $parents->name = $request->input('parent_name');
+        $parents->birthplace = $request->input('parent_birthplace');
+        $parents->birthdate = $request->input('birthdate');
+        $parents->phone = $request->input('parent_phone');
+        $parents->job = $request->input('parent_job');
+        $parents->save();
+
         $id = $request->input('id');
 
         $student = Student::findOrFail($id);
@@ -104,6 +125,11 @@ class StudentController extends Controller
         $student->gender_id = $request->input('gender_id');
         $student->religion_id = $request->input('religion_id');
         $student->room_id = $request->input('room_id');
+
+        if($parents)
+        {
+            $student->parents_id = $parents->id;
+        }
 
         if($student->save())
         {

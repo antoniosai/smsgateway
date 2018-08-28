@@ -53,8 +53,12 @@ class RoomController extends Controller
     {
         $data = Room::findOrFail($id);
 
+        $schedule = \App\Schedule::where('room_id', $id)->get();
+        $schedule_exam = \App\ScheduleExam::where('room_id', $id)->get();
+
         return view('admin.room.detail', [
-            'schedule' => [],
+            'schedule' => $schedule,
+            'schedule_exam' => $schedule_exam,
             'data' => $data,
             'selected_day' => NULL
         ]);

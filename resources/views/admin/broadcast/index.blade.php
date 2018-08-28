@@ -9,11 +9,32 @@ Broadcasting SMS
     <div class="col-md-12">
         <div class="clearfix">
             <div class="pull-right">
-                <a href="/admin/room/add" class="btn btn-success"><i class="fa fa-plus"></i> Buat Broadcast Baru</a>
+                <a href="/admin/broadcast/add" class="btn btn-success"><i class="fa fa-plus"></i> Buat Broadcast Baru</a>
             </div>
         </div>
         <hr>
-        
+        <table class="table table-hover table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Tujuan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($data as $broadcast)
+                <tr>
+                    <td>{{ $broadcast->name }}</td>
+                    <td>{{ $broadcast->destination }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>  
+
+        <div class="clearfix">
+            <div class="pull-right">
+                    {{ $data->links() }}
+            </div>
+        </div>
     </div>
 </div>
 <br>
