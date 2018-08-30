@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('schedule_reminder', 'SMSController@schedule_reminder');
+Route::get('schedule_reminder', 'SMSController@reminder');
 
 Route::get('/', function () {
     return view('welcome');

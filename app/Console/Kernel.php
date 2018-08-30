@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        // 'sms:send'
+        'App\Console\Commands\SendSMS'
     ];
 
     /**
@@ -25,9 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            DB::table('recent_users')->delete();
-        })->hourly();
+        $schedule->command('sms:send --force')->dailyAt('23:17');
     }
 
     /**

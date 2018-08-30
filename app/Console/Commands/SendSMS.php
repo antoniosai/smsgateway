@@ -3,6 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Http\Controllers\SMSController;
+
+use Log;
+
+use DB;
+
+use App\Schedule;
+use App\Broadcast;
+use App\Day;
 
 class SendSMS extends Command
 {
@@ -37,6 +46,9 @@ class SendSMS extends Command
      */
     public function handle()
     {
-        //
+
+        DB::table('broadcasts')->delete();
+
+        $this->info('Berhasil menghapus Broadcast ' . $message_for_student[0]['student_phone']);
     }
 }

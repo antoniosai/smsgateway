@@ -47,7 +47,7 @@ class BroadcastController extends Controller
             foreach($student as $siswa)
             {
                 $broadcast = new \App\Broadcast;
-                $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y');
+                $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y') . ' untuk seluruh siswa';
                 $broadcast->destination = $siswa->phone;
                 $broadcast->message = $request->input('message');
                 if($broadcast->save())
@@ -56,7 +56,7 @@ class BroadcastController extends Controller
                 }
             }
 
-            return 'Pesan untuk siswa berhasil terkirim';
+            // return 'Pesan untuk siswa berhasil terkirim';
         }
         
         if($tujuan == 'parents')
@@ -69,7 +69,7 @@ class BroadcastController extends Controller
                 {
                     if($siswa->wali->phone && $siswa->wali->name){
                         $broadcast = new \App\Broadcast;
-                        $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y');
+                        $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y')  . ' untuk seluruh orang tua siswa';
                         $broadcast->destination = $siswa->wali->phone;
                         $broadcast->message = $request->input('message');
                         if($broadcast->save())
@@ -89,7 +89,7 @@ class BroadcastController extends Controller
             foreach($teacher as $guru)
             {
                 $broadcast = new \App\Broadcast;
-                $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y');
+                $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y') . ' untuk seluruh guru';
                 $broadcast->destination = $guru->phone;
                 $broadcast->message = $request->input('message');
                 if($broadcast->save())

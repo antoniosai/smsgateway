@@ -74,20 +74,30 @@
                                 </a>
                             </li>
                             <!-- END Menu Toggle -->
-                            @if(auth())
-                            <li>
-                                <a data-toggle="modal" data-target="#admin" class="btn btn-primary">Administrator</a>
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#guru" class="btn btn-success">Guru</a>
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#siswa" class="btn btn-warning">Siswa</a>
-                            </li>
+                            @if(Auth::guard('teacher')->user() || Auth::guard('student')->user() || Auth::guard('admin')->user())
+                                @if(Auth::guard('admin')->user())
+                                <a href="/admin/home" class="btn btn-primary">Dashboard Admin</a>
+                                @endif
+                                
+                                @if(Auth::guard('student')->user())
+                                <a href="/student/home" class="btn btn-primary">Dashboard Siswa</a>
+                                
+                                @endif
+                                
+                                @if(Auth::guard('teacher')->user())
+                                <a href="/teacher/home" class="btn btn-primary">Dashboard Guru</a>
+                                @endif
+                            
                             @else
-                            <li>
-                                <a href=""></a>
-                            </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#admin" class="btn btn-primary">Administrator</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#guru" class="btn btn-success">Guru</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#siswa" class="btn btn-warning">Siswa</a>
+                                </li>
                             @endif
                         </ul>
                         <!-- END Main Menu -->
@@ -251,18 +261,18 @@
                             <h4 class="modal-title">Login Siswa</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/teacher/login') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/login') }}">
                                 {{ csrf_field() }}
         
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                    <label for="username" class="col-md-4 control-label">Username</label>
         
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus>
+                                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" autofocus>
         
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('username'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('email') }}</strong>
+                                                <strong>{{ $errors->first('username') }}</strong>
                                             </span>
                                         @endif
                                     </div>

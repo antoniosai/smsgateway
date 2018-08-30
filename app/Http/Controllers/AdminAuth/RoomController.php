@@ -42,9 +42,13 @@ class RoomController extends Controller
 
         $schedule = \App\Schedule::where($where_clause)->get();
 
+        $schedule_exam = \App\ScheduleExam::where('room_id', $request->room_id)->get();
+
+
         return view('admin.room.detail', [
             'data' => $data,
             'schedule' => $schedule,
+            'schedule_exam' => $schedule_exam,
             'selected_day' => $request->day_id
         ]);
     }

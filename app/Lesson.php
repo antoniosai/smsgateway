@@ -12,4 +12,9 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Teacher');
     }
+
+    public function schedule()
+    {
+        return $this->hasMany('App\Schedule', 'lesson_id');
+    }
 }
