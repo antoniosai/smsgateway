@@ -1,17 +1,49 @@
-@extends('teacher.layout.auth')
+@extends('teacher.layout.app')
+
+@section('title')
+Informasi Pribadi Siswa
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+@php $data = Auth::guard('teacher')->user() @endphp
 
-                <div class="panel-body">
-                    You are logged in as Teacher!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table">
+
+    <tr>
+        <td>nip</td>
+        <td>:</td>
+        <td>{{ $data->nip }}</td>
+    </tr>
+    <tr>
+        <td>Nama Lengkap</td>
+        <td>:</td>
+        <td>{{ $data->name }}</td>
+    </tr>
+    <tr>
+        <td>Kelas</td>
+        <td>:</td>
+        <td>@if($data->room) {{ $data->room->name }} @else Belum memiliki kelaas @endif</td>
+    </tr>
+    <tr>
+        <td>Nomor Telephone</td>
+        <td>:</td>
+        <td>{{ $data->phone }}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>:</td>
+        <td>{{ $data->email }}</td>
+    </tr>
+    <tr>
+        <td>TTL</td>
+        <td>:</td>
+        <td>{{ $data->birthplace }}, {{ $data->birthdate }}</td>
+    </tr>
+</table>
+@endsection
+
+@section('breadcrumbs')
+<li>
+    <a href="/teacher/home">Informasi Pribadi</a>
+</li>
 @endsection

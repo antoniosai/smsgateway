@@ -133,19 +133,19 @@
                                 <a href="javascript:void(0)" class="enable-tooltip" data-placement="bottom" title="Settings" onclick="$('#modal-user-settings').modal('show');">
                                     <i class="gi gi-cogwheel"></i>
                                 </a>
-                                <a href="{{ url('/student/logout') }}"
+                                <a href="{{ url('/teacher/logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();" data-toggle="tooltip" data-placement="bottom" title="Logout">
                                     <i class="gi gi-exit"></i>
                                 </a>
-                                <form id="logout-form" action="{{ url('/student/logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('/teacher/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>
                         </div>
                         <!-- END User Info -->
 
-                        @include('student.layout.sidebar')
+                        @include('teacher.layout.sidebar')
 
                     </div>
                     <!-- END Sidebar Content -->
@@ -170,7 +170,7 @@
                         'navbar-fixed-bottom'       for a bottom fixed header (fixed sidebars with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar()))
                             'header-fixed-bottom'   has to be added on #page-container only if the class 'navbar-fixed-bottom' was added
                     -->
-                @include('student.layout.header')
+                @include('teacher.layout.header')
                 <!-- END Header -->
 
                 <!-- Page content -->
@@ -201,7 +201,7 @@
                 <!-- END Page Content -->
 
                 <!-- Footer -->
-                @include('student.layout.footer')
+                @include('teacher.layout.footer')
                 <!-- END Footer -->
             </div>
             <!-- END Main Container -->

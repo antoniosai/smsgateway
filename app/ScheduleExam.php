@@ -10,6 +10,7 @@ class ScheduleExam extends Model
 
     protected $fillable = ['room_id', 'teacher_id', 'lesson_id','date', 'start', 'end'];
 
+
     public function lesson()
     {
         return $this->belongsTo('App\Lesson');
@@ -18,5 +19,10 @@ class ScheduleExam extends Model
     public function room()
     {
         return $this->belongsTo('App\Room');
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo('App\Teacher');
     }
 }

@@ -49,6 +49,7 @@ class BroadcastController extends Controller
                 $broadcast = new \App\Broadcast;
                 $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y') . ' untuk seluruh siswa';
                 $broadcast->destination = $siswa->phone;
+                $broadcast->category = 'student';
                 $broadcast->message = $request->input('message');
                 if($broadcast->save())
                 {
@@ -71,6 +72,7 @@ class BroadcastController extends Controller
                         $broadcast = new \App\Broadcast;
                         $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y')  . ' untuk seluruh orang tua siswa';
                         $broadcast->destination = $siswa->wali->phone;
+                        $broadcast->category = 'parent';
                         $broadcast->message = $request->input('message');
                         if($broadcast->save())
                         {
@@ -91,6 +93,7 @@ class BroadcastController extends Controller
                 $broadcast = new \App\Broadcast;
                 $broadcast->name = 'Pengumuman Tanggal ' . date('d M Y') . ' untuk seluruh guru';
                 $broadcast->destination = $guru->phone;
+                $broadcast->category = 'teacher';
                 $broadcast->message = $request->input('message');
                 if($broadcast->save())
                 {

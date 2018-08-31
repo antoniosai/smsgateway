@@ -1,7 +1,7 @@
 <!-- Sidebar Navigation -->
 <ul class="sidebar-nav">
     <li>
-        <a href="/student/home">
+        <a href="/teacher/home">
             <i class="gi gi-stopwatch sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide">Informasi Pribadi</span>
         </a>
@@ -12,17 +12,17 @@
         <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-database sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Menu Utama</span></a>
         <ul>
             <li>
-                <a href="/student/schedule/lesson">Jadwal Belajar</a>
+                <a href="/teacher/schedule/lesson">Jadwal Belajar</a>
             </li>
             <li>
-                <a href="/student/schedule/exam">Jadwal Ujian</a>
+                <a href="/teacher/schedule/exam">Jadwal Ujian</a>
             </li>
         </ul>
     </li>
 
 
     <li>
-        <a href="/student/announcement">
+        <a href="/teacher/announcement">
             <i class="fa fa-envelope sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide">Pengumuman</span>
         </a>
