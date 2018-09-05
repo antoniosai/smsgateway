@@ -5,10 +5,18 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
 
+
+    $info = App\Info::first();
     //dd($users);
 
-    return view('admin.home');
+    return view('admin.home', [
+        'info' => $info
+    ]);
 })->name('home');
+
+Route::group(['prefix' => 'school'], function(){
+    Route::post('save', 'AdminAuth\SchoolController@save');
+});
 
 
 Route::group(['prefix' => 'profile'], function(){

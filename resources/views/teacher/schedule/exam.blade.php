@@ -1,27 +1,13 @@
-@extends('student.layout.app')
+@extends('teacher.layout.app')
 
 @section('title')
-Jadwal Ujian Kelas {{ Auth::guard('student')->user()->room->name }}
+Jadwal Ujian Kelas {{ Auth::guard('teacher')->user()->room->name }}
 @endsection
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-10">
-            <div class="clearfix">
-                <div class="pull-right">
-                    <form action="/student/schedule/lesson/filter" class="form-inline">
-                        <div class="form-group">
-                            <select name="day_id" id="day_id" class="form-control">
-                                @foreach(App\Day::all() as $day)
-                                <option value="{{ $day->id }}">{{ $day->name }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit" class="btn btn-default">Filter</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
             {{-- @if($selected_day) --}}
             <table class="table table-hover table-striped table-condensed">
@@ -32,7 +18,7 @@ Jadwal Ujian Kelas {{ Auth::guard('student')->user()->room->name }}
                         <th>Jam Mulai</th>
                         <th>Jam Berakhir</th>
                         <th>Pelajaran</th>
-                        <th>Pengawas</th>
+                        <th>Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +31,7 @@ Jadwal Ujian Kelas {{ Auth::guard('student')->user()->room->name }}
                         <td>{{ $jadwal->start }}</td>
                         <td>{{ $jadwal->end }}</td>
                         <td>{{ $jadwal->lesson->name }}</td>
-                        <td>{{ $jadwal->teacher->name }}</td>
+                        <td>{{ $jadwal->room->name }}</td>
                     </tr>
                     @empty
                     <tr>
@@ -67,6 +53,6 @@ Jadwal Ujian Kelas {{ Auth::guard('student')->user()->room->name }}
 
 @section('breadcrumbs')
 <li>
-    <a href="/student/home">Jadwal Ujian</a>
+    <a href="/teacher/home">Jadwal Ujian</a>
 </li>
 @endsection

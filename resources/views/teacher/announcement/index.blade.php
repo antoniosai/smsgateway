@@ -1,7 +1,7 @@
 @extends('student.layout.app')
 
 @section('title')
-Dashboard Administrator
+Pengumuman
 @endsection
 
 @section('content')
@@ -42,6 +42,6 @@ Dashboard Administrator
 
 @section('breadcrumbs')
 <li>
-    <a href="/student/home">Pengumuman Siswa</a>
+    <a href="/teacher/home">Pengumuman Guru</a>
 </li>
 @endsection

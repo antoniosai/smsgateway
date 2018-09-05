@@ -10,12 +10,18 @@ use Auth;
 use App\Schedule;
 use App\ScheduleExam;
 
+use App\Lesson;
+
 class ScheduleController extends Controller
 {
     public function exam()
     {
         $schedule = Auth::guard('teacher')->user()->room->schedule_exam;
-        // $schedule = ScheduleExam::all();
+
+        if(!$schedule)
+        {
+            return redirect()->back()->with('errorMessage', 'Anda tidak memiliki jadwal mengawas ujian');
+        }
         
         return view('teacher.schedule.exam', [
             'schedule' => $schedule
@@ -24,10 +30,25 @@ class ScheduleController extends Controller
         
     public function lesson()
     {
-        $schedule = Schedule::where('teacher_id', Auth::guard('teacher')->user()->id);
+        $schedule = [];
+
+        $teacher = Auth::guard('teacher')->user();
+        $first_lesson = $teacher->lesson->first();
+
+        if(!$first_lesson)
+        {
+            return redirect()->back()->with('errorMessage', 'Guru tersebut tidak memiliki Jadwal mengajar');
+        }
+
+        foreach($teacher->lesson as $lesson)
+        {
+            array_push($schedule, $lesson->schedule);
+        }
+        // if(count($schedule[0]))
+
 
         return view('teacher.schedule.lesson', [
-            'schedule' => $schedule
+            'schedule' => $schedule[0]
         ]);
     }
 }

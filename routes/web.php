@@ -11,6 +11,15 @@
 |
 */
 
+Route::get('test', function(){
+  $command = "sudo gammu sendsms TEXT 08121494007 -text 'Test test test' 2>&1";
+
+
+  exec($command, $output, $return_var);
+
+  var_dump($output);
+});
+
 Route::get('schedule_reminder', 'SMSController@reminder');
 
 Route::get('/', function () {

@@ -12,10 +12,10 @@
         <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-database sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Menu Utama</span></a>
         <ul>
             <li>
-                <a href="/teacher/schedule/lesson">Jadwal Belajar</a>
+                <a href="/teacher/schedule/lesson">Jadwal Mengajar</a>
             </li>
             <li>
-                <a href="/teacher/schedule/exam">Jadwal Ujian</a>
+                <a href="/teacher/schedule/exam">Jadwal Mengawas Ujian</a>
             </li>
         </ul>
     </li>

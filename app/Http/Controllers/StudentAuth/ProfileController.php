@@ -58,7 +58,7 @@ class ProfileController extends Controller
                 return redirect()->back();
             }
             
-            $user->password = bcrypt($request->input('password'));
+            $student->password = bcrypt($request->input('password'));
         }
         
         if($student->save())

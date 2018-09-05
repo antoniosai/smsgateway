@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sms:send --force')->dailyAt('23:17');
+        $schedule->command('sms:send --force')->dailyAt('01:57');
     }
 
     /**

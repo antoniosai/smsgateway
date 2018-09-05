@@ -23,11 +23,6 @@
                         <i class="fa fa-user fa-fw pull-right"></i>
                         Profile
                     </a>
-                    <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
-                    <a href="#modal-user-settings" data-toggle="modal">
-                        <i class="fa fa-cog fa-fw pull-right"></i>
-                        Settings
-                    </a>
                     <a href="{{ url('/admin/logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" data-toggle="tooltip" data-placement="bottom" title="Logout">

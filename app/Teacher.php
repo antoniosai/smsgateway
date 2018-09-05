@@ -64,5 +64,10 @@ class Teacher extends Authenticatable
         return $this->hasMany('App\Lesson');
     }
 
+    public function exam()
+    {
+        return $this->hasMany('App\ScheduleExam', 'teacher_id');
+    }
+
     
 }

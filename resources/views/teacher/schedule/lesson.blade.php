@@ -32,7 +32,7 @@ Jadwal Mengajar
                         <th>Jam Mulai</th>
                         <th>Jam Berakhir</th>
                         <th>Pelajaran</th>
-                        <th></th>
+                        <th>Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,11 +44,8 @@ Jadwal Mengajar
                         <td>{{ $jadwal->day->name }}</td>
                         <td>{{ $jadwal->start }}</td>
                         <td>{{ $jadwal->end }}</td>
-                        <td>{{ $jadwal->lesson->name }} - {{ $jadwal->lesson->teacher->name }}</td>
-                        <td>
-                            <button data-toggle="modal" data-target="#edit_schedule-{{ $jadwal->id }}" class="btn btn-xs btn-warning" title="Edit Siswa"><i class="fa fa-pencil"></i></button>
-                            <a href="/admin/schedule/delete/{{ $jadwal->id }}" class="btn btn-xs btn-danger" title="Hapus Siswa"><i class="fa fa-trash"></i></a>    
-                        </td>
+                        <td>{{ $jadwal->lesson->name }}</td>
+                        <td>{{ $jadwal->room->name }}</td>
                     </tr>
                     @empty
                     <tr>

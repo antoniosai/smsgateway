@@ -46,9 +46,8 @@ class SendSMS extends Command
      */
     public function handle()
     {
-
         DB::table('broadcasts')->delete();
 
-        $this->info('Berhasil menghapus Broadcast ' . $message_for_student[0]['student_phone']);
+        // $this->info('Berhasil menghapus Broadcast ' . $message_for_student[0]['student_phone']);
     }
 }
