@@ -12,7 +12,7 @@
 */
 
 Route::get('test', function(){
-  $command = "sudo gammu sendsms TEXT 08121494007 -text 'Test test test' 2>&1";
+  $command = "gammu-smsd-inject TEXT 082128366600 -text 'All your base are belong to us'";
 
 
   exec($command, $output, $return_var);

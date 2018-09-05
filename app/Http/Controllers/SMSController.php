@@ -19,7 +19,7 @@ class SMSController extends Controller
     {
 
         // return exec('whoami', );
-        exec("gammu sendsms TEXT 08121494007 -text 'Test test test'", $output, $return_var);
+        // exec("gammu-smsd-inject TEXT 08121494007 -text 'Test test test'", $output, $return_var);
 
         
         $now = date('D');
@@ -123,8 +123,8 @@ class SMSController extends Controller
         // return count($message_for_teacher);
         for($y = 0; $y < count($message_for_teacher); $y++)
         {
-            $process = exec('gammu sendsms TEXT '.$message_for_teacher[$y]['phone'].' -text "'.$message_for_teacher[$y]['message'].'"');
-            // return 'gammu sendsms TEXT '.$message_for_teacher[$y]['phone'].' -text "'.$message_for_teacher[$y]['message'].'"';
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_teacher[$y]['phone'].' -text "'.$message_for_teacher[$y]['message'].'"');
+            // return 'gammu-smsd-inject TEXT '.$message_for_teacher[$y]['phone'].' -text "'.$message_for_teacher[$y]['message'].'"';
             $broadcast = new Broadcast;
             $broadcast->name = 'Pemberitahuan Jadwal Mengajar pada Hari ' . $today->name . ' tanggal ' . date('d-M-Y') . ' untuk Guru ' . $message_for_teacher[$y]['name'] . ' ('.$message_for_teacher[$y]['phone'].')';
             $broadcast->destination = $message_for_teacher[$y]['phone'];
@@ -139,7 +139,7 @@ class SMSController extends Controller
         for($i = 0; $i < count($message_for_student); $i++)
         {
             //Execute Gammu Command for Sending a SMS
-            $process = exec('gammu sendsms TEXT '.$message_for_student[$i]['phone'].' -text "'.$message_for_student[$i]['message'].'"');
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_student[$i]['phone'].' -text "'.$message_for_student[$i]['message'].'"');
 
             $broadcast = new Broadcast;
             $broadcast->name = 'Pemberitahuan Jadwal Belajar Hari ' . $today->name . ' tanggal ' . date('d-M-Y') . ' untuk Siswa ' . $message_for_student[$i]['name'] . ' ('.$message_for_student[$i]['phone'].')';
@@ -156,7 +156,7 @@ class SMSController extends Controller
         for($x = 0; $x < count($message_for_parent); $x++)
         {
             //Execute Gammu Command for Sending a SMS
-            $process = exec('gammu sendsms TEXT '.$message_for_parent[$x]['phone'].' -text "'.$message_for_parent[$x]['message'].'"');
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_parent[$x]['phone'].' -text "'.$message_for_parent[$x]['message'].'"');
 
             $broadcast = new Broadcast;
             $broadcast->name = 'Pemberitahuan Jadwal Belajar Hari ' . $today->name . ' tanggal ' . date('d-M-Y') . ' untuk Siswa ' . $message_for_parent[$x]['name'] . ' ('.$message_for_parent[$x]['phone'].')';
@@ -266,7 +266,7 @@ class SMSController extends Controller
         for($i = 0; $i < count($message_for_student); $i++)
         {
             //Execute Gammu Command for Sending a SMS
-            $process = exec('gammu sendsms TEXT '.$message_for_student[$i]['student_phone'].' -text "'.$message_for_student[$i]['message'].'"');
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_student[$i]['student_phone'].' -text "'.$message_for_student[$i]['message'].'"');
 
             if(!$process)
             {
@@ -287,7 +287,7 @@ class SMSController extends Controller
         for($x = 0; $x < count($message_for_parent); $x++)
         {
             //Execute Gammu Command for Sending a SMS
-            $process = exec('gammu sendsms TEXT '.$message_for_parent[$x]['phone'].' -text "'.$message_for_parent[$x]['message'].'"');
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_parent[$x]['phone'].' -text "'.$message_for_parent[$x]['message'].'"');
 
             if(!$process)
             {
@@ -306,7 +306,7 @@ class SMSController extends Controller
         //Looping for Sending SMS for Teacher
         for($y = 0; $y < count($message_for_teacher); $y++)
         {
-            $process = exec('gammu sendsms TEXT '.$message_for_teacher[$y]['teacher_phone'].' -text "'.$message_for_teacher[$y]['message'].'"');
+            $process = exec('gammu-smsd-inject TEXT '.$message_for_teacher[$y]['teacher_phone'].' -text "'.$message_for_teacher[$y]['message'].'"');
 
 
             if(!$process)
