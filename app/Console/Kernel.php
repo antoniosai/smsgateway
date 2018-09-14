@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // 'sms:send'
-        'App\Console\Commands\SendSMS'
+        Commands\SendSMS::class,
     ];
 
     /**
@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sms:send --force')->dailyAt('01:57');
+        $schedule->command('sms:send')
+            ->dailyAt('15:00');
     }
 
     /**
